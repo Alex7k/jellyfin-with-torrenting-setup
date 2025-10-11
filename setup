@@ -1,0 +1,27 @@
+#!/bin/bash
+# IMPORTANT: before running, fill out "password=" in smbcredentials file
+
+set -e
+
+sudo apt update -y
+sudo apt install -y \
+    docker.io \
+    docker-compose-plugin \
+    cifs-utils
+
+sudo mkdir -p /mnt/media/{movies,shows}
+sudo mkdir -p /mnt/torrents/{incomplete,completed}
+sudo mkdir -p /mnt/appdata/{jellyfin,jellyseerr,radarr,sonarr,prowlarr,qbittorrent}
+
+sudo cp fstab /etc/fstab
+sudo chmod 644 /etc/fstab
+sudo cp smbcredentials /etc/smbcredentials
+sudo chmod 600 /etc/smbcredentials
+
+sudo mount -a
+sudo chown -R 1000:1000 /mnt/media /mnt/torrents /mnt/appdata
+sudo systemctl enable docker
+sudo systemctl start docker
+
+docker compose pull
+# docker compose up -d

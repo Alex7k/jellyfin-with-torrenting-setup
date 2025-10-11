@@ -1,0 +1,10 @@
+# /etc/fstab
+proc            /proc           proc    defaults          0       0
+PARTUUID=ba44ce36-01  /boot/firmware  vfat    defaults          0       2
+PARTUUID=ba44ce36-02  /               ext4    defaults,noatime  0       1
+
+# NAS Media share (Movies / Shows)
+//ALEXHOME/AlexFileShare/Library/Media /mnt/media cifs credentials=/etc/smbcredentials,iocharset=utf8,vers=3.0,rw,file_mode=0777,dir_mode=0777,nounix,noserverino 0 0
+
+# NAS Torrents share (incomplete + completed)
+//ALEXHOME/AlexFileShare/Library/Torrents /mnt/torrents cifs credentials=/etc/smbcredentials,iocharset=utf8,vers=3.0,rw,file_mode=0777,dir_mode=0777,nounix,noserverino 0 0

@@ -1,0 +1,101 @@
+version: "3.9"
+
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+      - WEBUI_PORT=8080
+    volumes:
+      - /mnt/appdata/qbittorrent:/config
+      - /mnt/torrents/incomplete:/downloads/incomplete
+      - /mnt/torrents/completed:/downloads/completed
+    ports:
+      - "8080:8080"     # Web UI
+      - "6881:6881"     # Torrent TCP
+      - "6881:6881/udp" # Torrent UDP
+    restart: unless-stopped
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    volumes:
+      - /mnt/appdata/prowlarr:/config
+    ports:
+      - "9696:9696"
+    restart: unless-stopped
+    depends_on:
+      - qbittorrent
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    volumes:
+      - /mnt/appdata/radarr:/config
+      - /mnt/media/movies:/movies
+      - /mnt/torrents/completed:/downloads
+    ports:
+      - "7878:7878"
+    restart: unless-stopped
+    depends_on:
+      - prowlarr
+      - qbittorrent
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    volumes:
+      - /mnt/appdata/sonarr:/config
+      - /mnt/media/shows:/tv
+      - /mnt/torrents/completed:/downloads
+    ports:
+      - "8989:8989"
+    restart: unless-stopped
+    depends_on:
+      - prowlarr
+      - qbittorrent
+
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    environment:
+      - LOG_LEVEL=info
+      - TZ=Europe/Zurich
+    volumes:
+      - /mnt/appdata/jellyseerr:/app/config
+    ports:
+      - "5055:5055"
+    restart: unless-stopped
+    depends_on:
+      - radarr
+      - sonarr
+
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zurich
+    volumes:
+      - /mnt/appdata/jellyfin:/config
+      - /mnt/media:/data
+    ports:
+      - "8096:8096"
+    restart: unless-stopped
+
