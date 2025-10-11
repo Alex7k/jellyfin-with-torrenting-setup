@@ -2,7 +2,8 @@
 
 ## Usage
 
-Read [setup](setup)
+1. Before running, fill out "password=" in smbcredentials file
+1. Run [setup](setup)
 
 ## Services
 - qbittorrent
