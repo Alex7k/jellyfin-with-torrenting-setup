@@ -13,15 +13,25 @@ sudo mkdir -p /mnt/media/{movies,shows}
 sudo mkdir -p /mnt/torrents/{incomplete,completed}
 sudo mkdir -p /mnt/appdata/{jellyfin,jellyseerr,radarr,sonarr,prowlarr,qbittorrent}
 
-sudo cp fstab /etc/fstab
+sudo tee -a /etc/fstab < fstab_amendment # amend /etc/fstab. not idempotent
 sudo chmod 644 /etc/fstab
 sudo cp smbcredentials /etc/smbcredentials
 sudo chmod 600 /etc/smbcredentials
 
+sudo systemctl daemon-reload
 sudo mount -a
-sudo chown -R 1000:1000 /mnt/media /mnt/torrents /mnt/appdata
+
+USER_ID=$(id -u)
+GROUP_ID=$(id -g)
+sudo chown -R "${USER_ID}:${GROUP_ID}" /mnt/media /mnt/torrents /mnt/appdata
+
 sudo systemctl enable docker
 sudo systemctl start docker
 
+sudo usermod -aG docker $USER # so you don't have to use sudo for docker
+newgrp docker # you may also log out and back in
+
+cp qBittorrent.conf /mnt/appdata/qbittorrent/qBittorrent/qBittorrent.conf -f # overwrite config file
+
 docker compose pull
-# docker compose up -d
+docker compose up -d

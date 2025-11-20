@@ -1,0 +1,9 @@
+
+log into qbittorrent (http://localhost:8080/) with
+user: admin
+password: change-this-password-jellyfish-swamp!
+(you should change the password in settings -> webui)
+
+check that Downloadspath is downloads/completed, not just downloads/
+
+---
