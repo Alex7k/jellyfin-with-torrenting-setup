@@ -1,5 +1,7 @@
 #!/bin/bash
-# IMPORTANT: before running, fill out "password=" in smbcredentials file
+# IMPORTANT: before running, do:
+cp smbcredentials_template smb_credentials
+# and fill out "password=" in smbcredentials file
 
 set -e
 
