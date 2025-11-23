@@ -12,7 +12,7 @@ sudo apt install -y \
     cifs-utils
 
 sudo mkdir -p /mnt/media/{movies,shows}
-sudo mkdir -p /mnt/torrents/{incomplete,completed}
+sudo mkdir -p /mnt/torrents/{incomplete}
 sudo mkdir -p /mnt/appdata/{jellyfin,jellyseerr,radarr,sonarr,prowlarr,qbittorrent}
 
 sudo tee -a /etc/fstab < fstab_amendment # amend /etc/fstab. not idempotent
