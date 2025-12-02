@@ -2,16 +2,16 @@
 
 ## Introduction
 
-With this setup, you'll have a personal streaming service where you can request movies/shows with a click of a button and it will automatically torrent them so that you can watch them in a netflix-like webui.
+With this setup, you'll have a personal streaming service where you can request movies/shows with a click of a button and it will automatically torrent them so that you can watch them in a Netflix-like web UI.
 This setup is intended to be used with a network share for file storage. You could skip some steps if you just want to store files locally.
 
 ## Services
 
-- **jellyseerr:** let's user pick browse/choose media and forwards requests to radarr/sonarr
+- **jellyseerr:** lets user pick browse/choose media and forwards requests to radarr/sonarr
 - **radarr:** (for movies) + sonarr (for shows): monitor requested episodes, making requests to prowlarr
 - **prowlarr:** finds torrents appropriate to radarr/sonarr's needs and sends to qbittorrent
 - **qbittorrent:** downloads torrents (radarr/sonarr will see that it finished and rename/organize the files)
-- **jellyfin:** WebUI to display whatever is in the media folder
+- **jellyfin:** web UI to display whatever is in the media folder
 
 ## Folder Layout Example
 
