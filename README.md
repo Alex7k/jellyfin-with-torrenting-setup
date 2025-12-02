@@ -15,7 +15,7 @@ This setup is intended to be used with a network share for file storage. You cou
 
 ## Folder Layout Example
 
-```
+```txt
 /mnt/media
 ├── movies
 │   └── The Human Centipede (First Sequence) (2009)
@@ -35,13 +35,13 @@ This setup is intended to be used with a network share for file storage. You cou
     └── Midsommar 2019 Directors Cut 1080p BluRay REMUX AVC DTS-HD MA 5.1-EPSiLON [RiCK]
 ```
 
-## Setup 
+## Setup
 
 1. Before running, fill out "password=" in smbcredentials file
 1. Run commands in [setup](setup) (I recommend running commands one by one)
 
 ## Usage
 
-Use Jellyfin in your browser at 'IP:8096' (substitute 'IP'). It will guide you in setting it up. Make sure to make 2 libraries "Movies" (/mnt/media/shows) and "Shows" (/mnt/media/shows)
+Use Jellyfin in your browser at 'IP:8096' (substitute 'IP'). It will guide you in setting it up. Make sure to make 2 libraries "Movies" (/mnt/media/movies) and "Shows" (/mnt/media/shows)
 
 There is also a Jellyfin app for mobile devices
