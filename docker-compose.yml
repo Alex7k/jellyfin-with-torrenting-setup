@@ -9,7 +9,7 @@ services:
       - WEBUI_PORT=8080
     volumes:
       - /mnt/appdata/qbittorrent:/config
-      - /mnt/torrents:/downloads
+      - /mnt/media-server/torrents:/downloads
     ports:
       - "8080:8080"     # Web UI
       - "6881:6881"     # Torrent TCP
@@ -40,8 +40,8 @@ services:
       - TZ=Europe/Zurich
     volumes:
       - /mnt/appdata/radarr:/config
-      - /mnt/media/movies:/movies
-      - /mnt/torrents:/downloads
+      - /mnt/media-server/media/movies:/movies
+      - /mnt/media-server/torrents:/downloads
     ports:
       - "7878:7878"
     restart: unless-stopped
@@ -58,8 +58,8 @@ services:
       - TZ=Europe/Zurich
     volumes:
       - /mnt/appdata/sonarr:/config
-      - /mnt/media/shows:/tv
-      - /mnt/torrents:/downloads
+      - /mnt/media-server/media/shows:/tv
+      - /mnt/media-server/torrents:/downloads
     ports:
       - "8989:8989"
     restart: unless-stopped
@@ -91,7 +91,7 @@ services:
       - TZ=Europe/Zurich
     volumes:
       - /mnt/appdata/jellyfin:/config
-      - /mnt/media:/data
+      - /mnt/media-server/media:/data
     ports:
       - "8096:8096"
     restart: unless-stopped
