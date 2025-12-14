@@ -1,2 +1,0 @@
-# NAS Media share
-//alex-nas/media-server /mnt/media-server cifs credentials=/etc/smbcredentials,iocharset=utf8,vers=3.0,uid=1000,gid=1000,file_mode=0777,dir_mode=0777,nounix,noperm,noserverino 0 0
