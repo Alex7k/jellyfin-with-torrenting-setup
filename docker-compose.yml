@@ -8,8 +8,8 @@ services:
       - TZ=Europe/Zurich
       - WEBUI_PORT=8080
     volumes:
-      - /mnt/appdata/qbittorrent:/config
-      - /mnt/media-server/torrents:/downloads
+      - /srv/media-server/appdata/qbittorrent:/config
+      - /srv/media-server/torrents:/downloads
     ports:
       - "8080:8080"     # Web UI
       - "6881:6881"     # Torrent TCP
@@ -24,7 +24,7 @@ services:
       - PGID=1000
       - TZ=Europe/Zurich
     volumes:
-      - /mnt/appdata/prowlarr:/config
+      - /srv/media-server/appdata/prowlarr:/config
     ports:
       - "9696:9696"
     restart: unless-stopped
@@ -39,9 +39,9 @@ services:
       - PGID=1000
       - TZ=Europe/Zurich
     volumes:
-      - /mnt/appdata/radarr:/config
-      - /mnt/media-server/media/movies:/movies
-      - /mnt/media-server/torrents:/downloads
+      - /srv/media-server/appdata/radarr:/config
+      - /srv/media-server/media/movies:/movies
+      - /srv/media-server/torrents:/downloads
     ports:
       - "7878:7878"
     restart: unless-stopped
@@ -57,9 +57,9 @@ services:
       - PGID=1000
       - TZ=Europe/Zurich
     volumes:
-      - /mnt/appdata/sonarr:/config
-      - /mnt/media-server/media/shows:/tv
-      - /mnt/media-server/torrents:/downloads
+      - /srv/media-server/appdata/sonarr:/config
+      - /srv/media-server/media/shows:/tv
+      - /srv/media-server/torrents:/downloads
     ports:
       - "8989:8989"
     restart: unless-stopped
@@ -74,7 +74,7 @@ services:
       - LOG_LEVEL=info
       - TZ=Europe/Zurich
     volumes:
-      - /mnt/appdata/jellyseerr:/app/config
+      - /srv/media-server/appdata/jellyseerr:/app/config
     ports:
       - "5055:5055"
     restart: unless-stopped
@@ -90,8 +90,8 @@ services:
       - PGID=1000
       - TZ=Europe/Zurich
     volumes:
-      - /mnt/appdata/jellyfin:/config
-      - /mnt/media-server/media:/data
+      - /srv/media-server/appdata/jellyfin:/config
+      - /srv/media-server/media:/data
     ports:
       - "8096:8096"
     restart: unless-stopped
@@ -105,8 +105,8 @@ services:
   #     - TZ=Europe/Zurich
   #     - PLEX_CLAIM=claim-CHANGEME
   #   volumes:
-  #     - /mnt/appdata/plex:/config
-  #     - /mnt/media-server/media:/data
+  #     - /srv/media-server/appdata/plex:/config
+  #     - /srv/media-server/media:/data
   #   ports:
   #     - "32400:32400"
   #   restart: unless-stopped

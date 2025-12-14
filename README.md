@@ -2,8 +2,8 @@
 
 ## Introduction
 
-With this setup, you'll have a personal streaming service where you can request movies/shows with a click of a button and it will automatically torrent them so that you can watch them in a Netflix-like web UI.
-This setup is intended to be used with a network share for file storage. You could skip some steps if you just want to store files locally.
+With this setup, you'll have a personal streaming service where you can request movies/shows with a click of a button and have them automatically torrented so that you can watch them in a Netflix-like web UI.
+If you wish to use this setup with a network share, use branch "network-share-attached-setup"
 
 ## Services
 
@@ -16,7 +16,7 @@ This setup is intended to be used with a network share for file storage. You cou
 ## Folder Layout Example
 
 ```txt
-/mnt/media
+/srv/media-server/media
 ├── movies
 │   └── The Human Centipede (First Sequence) (2009)
 └── shows
@@ -25,7 +25,7 @@ This setup is intended to be used with a network share for file storage. You cou
         ├── Season 2
         └── Season 3
 
-/mnt/torrents
+/srv/media-server/torrents
 ├── completed
 │   ├── Black.Mirror.S01.1080p.WEBRip.DD2.0.x264-CasStudio[rartv]
 │   ├── Black.Mirror.S02.1080p.WEBRip.DD2.0.x264-CasStudio[rartv]
@@ -37,8 +37,33 @@ This setup is intended to be used with a network share for file storage. You cou
 
 ## Setup
 
-1. Before running, fill out "password=" in smbcredentials file
-1. Run commands in [setup](setup) (I recommend running commands one by one)
+1. Run in a shell:
+
+    ```bash
+    sudo apt update -y
+    sudo apt install -y docker.io docker-compose-plugin
+
+    sudo systemctl enable --now docker
+    sudo usermod -aG docker "$USER" # so you don't have to use sudo for docker. log out/in afterwards.
+
+    # create folder structure
+    sudo mkdir -p /srv/media-server/media/{movies,shows}
+    sudo mkdir -p /srv/media-server/torrents/incomplete
+    sudo mkdir -p /srv/media-server/appdata/{jellyfin,jellyseerr,radarr,sonarr,prowlarr,qbittorrent}
+
+    sudo chown -R "$(id -u):$(id -g)" /srv/media-server
+
+    # copy custom config into qbittorrent
+    sudo mkdir -p /srv/media-server/appdata/qbittorrent/qBittorrent
+    sudo cp -f qBittorrent.conf /srv/media-server/appdata/qbittorrent/qBittorrent/qBittorrent.conf # overwrite config file
+
+    # start
+    docker compose pull
+    docker compose up -d
+    ```
+
+1. Optional: Open web UI at http://localhost:8080 (user: "admin", password: "adminadmin") and change the password.
+1. Go to web UIs of all services and set them up <!-- TODO: needs more documentation -->
 
 ## Usage
 
