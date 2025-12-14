@@ -96,3 +96,17 @@ services:
       - "8096:8096"
     restart: unless-stopped
 
+  # plex: # plex is an alternative to jellyfin. It's closed-source and requires a subscription for the ability to stream from outside of your local network. I think it also supports automatic pre-transcoding of the video library to more compatible formats, but I've only tried it a little. Uncomment this block and add a PLEX_CLAIM token from https://account.plex.tv/claim
+  #   image: lscr.io/linuxserver/plex:latest
+  #   container_name: plex
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=1000
+  #     - TZ=Europe/Zurich
+  #     - PLEX_CLAIM=claim-CHANGEME
+  #   volumes:
+  #     - /mnt/appdata/plex:/config
+  #     - /mnt/media-server/media:/data
+  #   ports:
+  #     - "32400:32400"
+  #   restart: unless-stopped
