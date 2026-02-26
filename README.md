@@ -64,6 +64,6 @@ If you wish to use this setup with a network share, use branch "network-share-at
 
 ## Usage
 
-Use Jellyfin in your browser at 'IP:8096' (substitute 'IP'). It will guide you in setting it up. Make sure to make 2 libraries "Movies" (/mnt/media/movies) and "Shows" (/mnt/media/shows)
+Use Jellyfin in your browser at '\<ip>:8096' (substitute 'IP') (or over domain if you [use caddy](#optional-caddy-reverse-proxy)). It will guide you in setting it up. Make sure to create 2 libraries: "Movies" (/mnt/media/movies) and "Shows" (/mnt/media/shows)
 
-There is also a Jellyfin app for mobile devices
+Tip: There is a Jellyfin desktop app and mobile app. They may have better compatibility with certain media formats than web which leads to less need for transcoding
