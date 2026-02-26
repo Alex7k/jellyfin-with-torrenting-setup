@@ -1,5 +1,9 @@
 # Jellyfin with Torrenting (Linux)
 
+## Prerequisites:
+
+- Linux machine (tested on Debian)
+
 ## Introduction
 
 With this setup, you'll have a personal streaming service where you can request movies/shows with a click of a button and have them automatically torrented so that you can watch them in a Netflix-like web UI.
