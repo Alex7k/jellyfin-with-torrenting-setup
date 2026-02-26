@@ -72,7 +72,7 @@ If you already run Caddy, you can attach these services to an external `caddy_ne
 
 ```bash
 docker network create caddy_net # one-time
-docker compose -f docker-compose.yml -f docker-compose.caddy.yml up -d
+docker compose -f compose.yml -f compose.caddy.yml up -d
 ```
 
 ## Usage
