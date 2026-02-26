@@ -37,13 +37,11 @@ If you wish to use this setup with a network share, use branch "network-share-at
 
 ## Setup
 
-1. Run in a shell:
+1. Run:
 
     ```bash
-    sudo apt update -y
-    sudo apt install -y docker.io docker-compose-plugin
+    curl -fsSL https://get.docker.com/ | sh # install docker (skip if you already have it)
 
-    sudo systemctl enable --now docker
     sudo usermod -aG docker "$USER" # so you don't have to use sudo for docker. log out/in afterwards.
 
     # create folder structure
@@ -58,7 +56,6 @@ If you wish to use this setup with a network share, use branch "network-share-at
     sudo cp -f qBittorrent.conf /srv/media-server/appdata/qbittorrent/qBittorrent/qBittorrent.conf # overwrite config file
 
     # start
-    docker compose pull
     docker compose up -d
     ```
 
