@@ -1,0 +1,17 @@
+services:
+  qbittorrent:
+    networks: [default, caddy_net]
+  prowlarr:
+    networks: [default, caddy_net]
+  radarr:
+    networks: [default, caddy_net]
+  sonarr:
+    networks: [default, caddy_net]
+  jellyseerr:
+    networks: [default, caddy_net]
+  jellyfin:
+    networks: [default, caddy_net]
+
+networks:
+  caddy_net:
+    external: true

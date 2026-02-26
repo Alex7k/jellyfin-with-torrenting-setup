@@ -64,7 +64,16 @@ If you wish to use this setup with a network share, use branch "network-share-at
     ```
 
 1. Optional: Open web UI at http://localhost:8080 (user: "admin", password: "adminadmin") and change the password.
-1. Go to web UIs of all services and set them up <!-- TODO: needs more documentation -->
+1. Go to web UIs of all services and set them up [Internal note: more documentation needed] <!-- TODO: needs more documentation -->
+
+## Optional: Caddy reverse proxy
+
+If you already run Caddy, you can attach these services to an external `caddy_net` (or change the name if you already have one) (this preserving host port access)
+
+```bash
+docker network create caddy_net # one-time
+docker compose -f docker-compose.yml -f docker-compose.caddy.yml up -d
+```
 
 ## Usage
 
