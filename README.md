@@ -1,9 +1,5 @@
 # Jellyfin with Torrenting (Linux)
 
-## Prerequisites:
-
-- Linux machine (tested on Debian)
-
 ## Introduction
 
 With this setup, you'll have a personal streaming service where you can request movies/shows with a click of a button and have them automatically torrented so that you can watch them in a Netflix-like web UI.
@@ -17,7 +13,7 @@ If you wish to use this setup with a network share, use branch "network-share-at
 - **qbittorrent:** downloads torrents (radarr/sonarr will see that it finished and rename/organize the files)
 - **jellyfin:** web UI to display whatever is in the media folder
 
-## Folder Layout Example
+## Directory Layout Example
 
 ```txt
 /srv/media-server/media
@@ -38,6 +34,9 @@ If you wish to use this setup with a network share, use branch "network-share-at
 └── incomplete
     └── Midsommar 2019 Directors Cut 1080p BluRay REMUX AVC DTS-HD MA 5.1-EPSiLON [RiCK]
 ```
+
+## Prerequisites:
+- Linux machine (tested on Debian Trixie x64)
 
 ## Setup
 
