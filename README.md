@@ -37,16 +37,17 @@ If you wish to use this setup with a network share, use branch "network-share-at
 
 ## Prerequisites:
 - Linux machine (tested on Debian Trixie x64)
+- Docker with docker compose:
+  ```bash
+  curl -fsSL https://get.docker.com/ | sh # install docker
+  sudo usermod -aG docker "$USER" # so you don't have to use sudo for docker. log out/in afterwards.
+  ```
 
 ## Setup
 
 1. Run:
 
     ```bash
-    curl -fsSL https://get.docker.com/ | sh # install docker (skip if you already have it)
-
-    sudo usermod -aG docker "$USER" # so you don't have to use sudo for docker. log out/in afterwards.
-
     # create folder structure
     sudo mkdir -p /srv/media-server/media/{movies,shows}
     sudo mkdir -p /srv/media-server/torrents/incomplete
